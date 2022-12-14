@@ -1,0 +1,7 @@
+{
+  "name": "angular-admin-chips",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
