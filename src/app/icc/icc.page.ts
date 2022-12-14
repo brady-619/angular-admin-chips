@@ -70,10 +70,7 @@ console.log("aqui")
 
         localStorage.setItem("icc_global",this.icc_global)
 
-
-
         
-
 
       })
 
