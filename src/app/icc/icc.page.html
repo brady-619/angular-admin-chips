@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>icc</ion-title>
+    <ion-item>
+          <ion-title class="ion-text-center">ICC</ion-title>
+    <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+    </ion-item>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   
-  <h2>Carga masiva ICC </h2>
+ <ion-title class="ion-text-center"><h2>Carga masiva ICC </h2> </ion-title> 
   <p class="lead"></p>
   
   <!-- Upload  -->
-  <form id="file-upload-form" class="uploader">
+  <!-- <form id="file-upload-form" class="uploader">
     <input id="file-upload" type="file" 
     (change)="fileUpload($event)"
     
@@ -22,7 +27,7 @@
       <div id="start">
         <i class="fa fa-download" aria-hidden="true"></i>
         <div>Selecciona un archivo</div>
-        <div id="notimage" class="hidden">Please select an image</div>
+        <div id="notimage" class="hidden">Porfavor selecciona un archivo valido</div>
         <span id="file-upload-btn" class="btn btn-primary">Carga de archivo</span>
       </div>
       <div id="response" class="hidden">
@@ -32,6 +37,46 @@
         </progress>
       </div>
     </label>
-  </form>
+  </form> -->
+
+
+
+
+
+
+  <!-- <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+  <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button> -->
+
+
+
+
+
+
+
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+
+    <ion-col size="3">
+      <div class="input-file">
+        <label for="file-upload" class="lbl-file" [ngClass]="{color1: filename, color2: !filename}">
+          <ion-icon name="add" *ngIf="!filename" class="icon"></ion-icon>
+          <ion-icon name="checkmark-circle" *ngIf="filename" class="icon"> </ion-icon>
+        </label>
+        <input id="file-upload" type="file" (change)="fileHandle($event)" style='display: none;'>
+      </div>
+      <ion-label>
+        <h2>{{filename}}</h2>
+      </ion-label>
+      <ion-button (click)="createUsersMulti()" [disabled]="!filename"  size="small" color="primary">
+        Cargar empresas
+      </ion-button>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+
 
 </ion-content>
