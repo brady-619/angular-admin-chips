@@ -11,4 +11,36 @@
 
 <ion-content>
 
+
+  <ion-grid fixed>
+    <ion-row *ngFor="let item of data">
+      <ion-col size="6">
+
+    
+        <ion-card>
+              <ion-card-content>
+          Prveedor: {{item.marca}}
+        </ion-card-content>
+
+        <ion-item lines="none">
+          <ion-button expand="block" fill="clear" shape="round">
+            Editar
+          </ion-button>
+  
+          <ion-button color="danger" expand="block" fill="clear" shape="round">
+            Eliminar
+          </ion-button>
+        </ion-item>
+
+
+        </ion-card>
+
+
+
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
