@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'icc',
     loadChildren: () => import('./icc/icc.module').then( m => m.IccPageModule)
   },
+  {
+    path: 'bait',
+    loadChildren: () => import('./bait/bait.module').then( m => m.BaitPageModule)
+  },
+  {
+    path: 'vendedores',
+    loadChildren: () => import('./vendedores/vendedores.module').then( m => m.VendedoresPageModule)
+  },
 
 
 

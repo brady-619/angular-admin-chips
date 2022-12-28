@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-title class="ion-text-center">Vendedores</ion-title>
+      <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+
+
+      <ion-button color="light" (click)="nuevo()" shape="round"> <ion-icon color="warning" slot="icon-only"
+          name="create"></ion-icon>
+      </ion-button>
+
+
+
+
+
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row *ngFor="let item of data">
+      <ion-col size="6">
+
+
+        <ion-card>
+          <ion-card-content>
+
+            
+          <ion-label>Vendedor: {{item.nombre}}</ion-label>  
+
+            <ion-accordion-group>
+              <ion-accordion value="first">
+                <ion-item slot="header" >
+                  <ion-label>Datos</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                  Correo: {{item.correo}}<br>
+                  Telefono: {{item.telefono}} <br>
+                  
+                  <img src={{item.ine}} alt="">
+                </div>
+              </ion-accordion>
+
+            </ion-accordion-group>
+
+
+          </ion-card-content>
+
+
+
+          <ion-item lines="none">
+            <ion-button expand="block" fill="clear" shape="round">
+              Editar
+            </ion-button>
+
+            <ion-button color="danger" expand="block" fill="clear" shape="round">
+              Eliminar
+            </ion-button>
+          </ion-item>
+
+
+        </ion-card>
+
+
+
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

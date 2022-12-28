@@ -236,7 +236,7 @@ getPayload(data:any) {
     if (items[0] == undefined || items[1] == undefined || items[2] == undefined) {
       console.log("no valido")
     } else {
-      tmp.push({ ICCI: items[0], DN: items[1], FECHA: items[2], CLIENTE: items[3], CIUDAD: items[4], CANTIDAD: items[5]})
+      tmp.push({ ICCI: items[0], DN: items[1], FECHA: items[2], VENDEDOR: items[3], CIUDAD: items[4], COMPANIA: items[5], CADUCIDAD: items[6]})
     }
 
   }

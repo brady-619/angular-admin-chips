@@ -27,6 +27,15 @@ export class HomePage {
   }
 
 
+  bait(){
+    this.menu.toggle()
+    this.route.navigate(['/bait']);
+  }
 
+
+  vendedores(){
+    this.menu.toggle()
+    this.route.navigate(['/vendedores']);
+  }
 
 }
