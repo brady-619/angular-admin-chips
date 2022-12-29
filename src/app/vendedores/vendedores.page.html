@@ -6,10 +6,10 @@
       </ion-button>
 
 
-      <ion-button color="light" (click)="nuevo()" shape="round"> <ion-icon color="warning" slot="icon-only"
+      <!-- <ion-button color="light" (click)="nuevo()" shape="round"> <ion-icon color="warning" slot="icon-only"
           name="create"></ion-icon>
       </ion-button>
-
+ -->
 
 
 
@@ -75,4 +75,22 @@
 
 
 
+
+
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="chevron-up-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="nuevo()">
+        <ion-icon color="success" name="add"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
+
+
+
+

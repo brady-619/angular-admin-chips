@@ -38,4 +38,9 @@ export class HomePage {
     this.route.navigate(['/vendedores']);
   }
 
+  estatus(){
+    this.menu.toggle()
+    this.route.navigate(['/estatus']);
+  }
+
 }
