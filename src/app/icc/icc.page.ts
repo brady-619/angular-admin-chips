@@ -4,6 +4,7 @@ import { ExportIccService} from '../services/export-icc.service'
 import { HttpClient } from '@angular/common/http';
 // import { ToastUtil } from '../../../utils/toast.util';
 // import * as Constants from '../../../app.constants';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-icc',
@@ -39,7 +40,7 @@ incomingfile(event:any)
   si:any;
   articulos:any;
   // private toast: ToastUtil
-   constructor( private Exportservice:ExportIccService, private http: HttpClient) { }
+   constructor(public alertCtrl: AlertController, private Exportservice:ExportIccService, private http: HttpClient) { }
   //  constructor( ) { }
 
   ngOnInit() {
@@ -264,12 +265,52 @@ async createUsersMulti() {
   console.log("data2",data2)
 
 
-  await this.Exportservice.InsertICC(data2).then(respuesta =>  {
+  await this.Exportservice.InsertICC(data2).then(async respuesta =>  {
     console.log(data2)
-    console.log("paso chido",respuesta)
-    }).catch(error=> {
+    console.log(respuesta)
+    // console.log("paso chido",respuesta)
+    // if (respuesta.status = "000") {
+      // alert("Carga realizada con éxito.")
+
+
+
+
+
+      const alert = await this.alertCtrl.create({  
+        header: 'Registros enviados a carga con éxito.',  
+        // subHeader: 'SubTitle',  
+        // message: 'This is an alert message',  
+        buttons: ['OK']  
+      });  
+      await alert.present();  
+
+    // }
+    // else {
+    //   // alert("Error en carga.")
+    //   const alert = await this.alertCtrl.create({  
+    //     header: 'Error en carga.',  
+    //     // subHeader: 'SubTitle',  
+    //     // message: 'This is an alert message',  
+    //     buttons: ['OK']  
+    //   });  
+    //   await alert.present();  
+    // }
+
+
+
+    }).catch(async error=> {
       /* Código a realizar cuando se rechaza la promesa */
       console.log("NO paso chido",error)
+
+      const alert = await this.alertCtrl.create({  
+        header: 'Registros enviados a carga con éxito.',  
+        // subHeader: 'SubTitle',  
+        // message: 'This is an alert message',  
+        buttons: ['OK']  
+      });  
+      await alert.present();  
+
+
     });
 
 

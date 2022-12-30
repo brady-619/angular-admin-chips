@@ -12,9 +12,9 @@
 <ion-content>
 
 
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row *ngFor="let item of data">
-      <ion-col size="6">
+      <ion-col size="8">
 
     
         <ion-card>
@@ -23,13 +23,19 @@
         </ion-card-content>
 
         <ion-item lines="none">
-          <ion-button expand="block" fill="clear" shape="round">
-            Editar
-          </ion-button>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" shape="round">
+              Editar
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button color="danger" expand="block" fill="clear" shape="round">
+              Eliminar
+            </ion-button>
+          </ion-col>
+
   
-          <ion-button color="danger" expand="block" fill="clear" shape="round">
-            Eliminar
-          </ion-button>
+
         </ion-item>
 
 

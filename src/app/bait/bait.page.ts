@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InsertBaitService } from '../services/insert-bait.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-bait',
@@ -26,7 +27,7 @@ export class BaitPage implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private updateBait: InsertBaitService) { }
+  constructor(private http: HttpClient, private updateBait: InsertBaitService,public alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
@@ -97,24 +98,44 @@ export class BaitPage implements OnInit {
     console.log("data2", data2)
 
 
-    await this.updateBait.UpdateBait(data2).then(respuesta => {
+    await this.updateBait.UpdateBait(data2).then(async respuesta => {
       console.log(data2)
       console.log("paso chido", respuesta)
 
 
       if (respuesta.status = "000") {
-        alert("Carga realizada con éxito.")
+        // alert("Carga realizada con éxito.")
+        const alert = await this.alertCtrl.create({  
+          header: 'Registro creado con éxito.',  
+          // subHeader: 'SubTitle',  
+          // message: 'This is an alert message',  
+          buttons: ['OK']  
+        });  
+        await alert.present();  
       }
       else {
-        alert("Error en carga.")
-
+        // alert("Error en carga.")
+        const alert = await this.alertCtrl.create({  
+          header: 'Error en carga.',  
+          // subHeader: 'SubTitle',  
+          // message: 'This is an alert message',  
+          buttons: ['OK']  
+        });  
+        await alert.present();  
       }
 
 
 
-    }).catch(error => {
+    }).catch(async error => {
       /* Código a realizar cuando se rechaza la promesa */
-      console.log("NO paso chido", error)
+      // console.log("NO paso chido", error)
+      const alert = await this.alertCtrl.create({  
+        header: 'Error en carga.',  
+        // subHeader: 'SubTitle',  
+        // message: 'This is an alert message',  
+        buttons: ['OK']  
+      });  
+      await alert.present();  
     });
 
 
