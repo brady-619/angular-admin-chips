@@ -164,4 +164,60 @@ export class VendedoresPage implements OnInit {
     await alert.present();
   }
 
+
+
+  async editar(nombre:any, password:any) {
+
+ 
+
+    console.log("Aqui", nombre)
+    console.log("Aqui", password)
+
+    const alert = await this.alertController.create({
+      header: 'Actualizar vendedor',
+      // buttons: ['Guardar','Cancelar'],
+      buttons: [
+        {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+                console.log('Confirm Cancel');
+            }
+        }, 
+        {
+            text: 'Ok',
+            handler: (alertData) => { //takes the data 
+              // console.log("SIM vendida",sim);
+                console.log("El valor de venta enviado sera",alertData.nombre, alertData.password);
+            }
+        }
+    ],
+      inputs: [
+        // {
+        //   placeholder: 'SIM',
+        //   value: sim
+        // },
+        {
+          type: 'text',
+          name: 'nombre',
+          value: nombre,
+          placeholder: 'Nombre',
+        },
+        {
+          type: 'text',
+          name: 'password',
+          value: password,
+          placeholder: 'Nombre',
+        },
+      ],
+    });
+
+
+
+
+    await alert.present();
+  }
+
+
 }

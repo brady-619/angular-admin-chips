@@ -42,5 +42,14 @@ export class HomePage {
     this.menu.toggle()
     this.route.navigate(['/estatus']);
   }
+  salir(){
+    this.menu.toggle()
+    this.route.navigate(['/login']);
+    localStorage.removeItem('ingresado')
+  }
+  actualizaVendedor(){
+    this.menu.toggle()
+    this.route.navigate(['/actualiza-vendedor']);
+  }
 
 }
