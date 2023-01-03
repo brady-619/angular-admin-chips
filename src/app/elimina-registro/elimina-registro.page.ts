@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
+import { DeleteRegistroService } from '../services/delete-registro.service';
 import { HttpClient } from '@angular/common/http';
-import { InsertBaitService } from '../services/insert-bait.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-bait',
-  templateUrl: './bait.page.html',
-  styleUrls: ['./bait.page.scss'],
+  selector: 'app-elimina-registro',
+  templateUrl: './elimina-registro.page.html',
+  styleUrls: ['./elimina-registro.page.scss'],
 })
-export class BaitPage implements OnInit {
-
-
+export class EliminaRegistroPage implements OnInit {
 
   payload: any;
   filename: string = "";
@@ -26,11 +25,12 @@ export class BaitPage implements OnInit {
   }
 
 
+  constructor(private http: HttpClient, private deleteregistro: DeleteRegistroService ,public alertCtrl: AlertController) { }
 
-  constructor(private http: HttpClient, private updateBait: InsertBaitService,public alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
+
 
   fileHandle(e: any) {
     // console.log(e.target)
@@ -62,10 +62,10 @@ export class BaitPage implements OnInit {
     for (let i of data) {
       let items = i.split(',')
       // console.log("items:",items)
-      if (items[0] == undefined || items[1] == undefined || items[2] == undefined || items[3] == undefined) {
+      if (items[0] == undefined ) {
         console.log("no valido")
       } else {
-        tmp.push({ ICCI: items[0], DN: items[1], FECHA: items[2], CADUCIDAD: items[3] })
+        tmp.push({ ICCI: items[0] })
       }
 
     }
@@ -98,7 +98,7 @@ export class BaitPage implements OnInit {
     console.log("data2", data2)
 
 
-    await this.updateBait.UpdateBait(data2).then(async respuesta => {
+    await this.deleteregistro.DeleteRegistro(data2).then(async respuesta => {
       console.log(data2)
       console.log("paso chido", respuesta)
 
@@ -106,17 +106,18 @@ export class BaitPage implements OnInit {
       if (respuesta.status = "000") {
         // alert("Carga realizada con éxito.")
         const alert = await this.alertCtrl.create({  
-          header: 'Actualzación creada con éxito.',  
+          header: 'Registro eliminado con éxito.',  
           // subHeader: 'SubTitle',  
           // message: 'This is an alert message',  
           buttons: ['OK']  
         });  
         await alert.present();  
+
       }
       else {
         // alert("Error en carga.")
         const alert = await this.alertCtrl.create({  
-          header: 'Error en carga.',  
+          header: 'Registros no encontrados.',  
           // subHeader: 'SubTitle',  
           // message: 'This is an alert message',  
           buttons: ['OK']  
@@ -126,16 +127,9 @@ export class BaitPage implements OnInit {
 
 
 
-    }).catch(async error => {
+    }).catch(error => {
       /* Código a realizar cuando se rechaza la promesa */
-      // console.log("NO paso chido", error)
-      const alert = await this.alertCtrl.create({  
-        header: 'Error en carga.',  
-        // subHeader: 'SubTitle',  
-        // message: 'This is an alert message',  
-        buttons: ['OK']  
-      });  
-      await alert.present();  
+      console.log("NO paso chido", error)
     });
 
 

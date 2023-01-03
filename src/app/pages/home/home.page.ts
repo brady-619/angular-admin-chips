@@ -51,5 +51,9 @@ export class HomePage {
     this.menu.toggle()
     this.route.navigate(['/actualiza-vendedor']);
   }
+  eliminaRegistro(){
+    this.menu.toggle()
+    this.route.navigate(['/elimina-registro']);
+  }
 
 }

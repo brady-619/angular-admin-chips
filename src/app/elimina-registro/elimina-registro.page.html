@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+          <ion-title class="ion-text-center">Elimina registro</ion-title>
+    <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <ion-title class="ion-text-center"><h2>Elimina registro en Ventas</h2> </ion-title> 
+   <p class="lead"></p>
+   
+ <ion-grid>
+   <ion-row class="ion-justify-content-center">
+ 
+     <ion-col size="3">
+       <div class="input-file">
+         <label for="file-upload" class="lbl-file" [ngClass]="{color1: filename, color2: !filename}">
+           <ion-icon name="add" *ngIf="!filename" class="icon"></ion-icon>
+           <ion-icon name="checkmark-circle" *ngIf="filename" class="icon"> </ion-icon>
+         </label>
+         <input id="file-upload" type="file" (change)="fileHandle($event)" style='display: none;'>
+       </div>
+       <ion-label>
+         <h2>{{filename}}</h2>
+       </ion-label>
+       <ion-button (click)="createUsersMulti()" [disabled]="!filename"  size="small" color="primary">
+         Cargar eliminación de registro
+       </ion-button>
+ 
+     </ion-col>
+   </ion-row>
+ </ion-grid>
+ 
+ </ion-content>
+ 

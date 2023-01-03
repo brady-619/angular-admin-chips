@@ -49,6 +49,11 @@ const routes: Routes = [
     loadChildren: () => import('./actualiza-vendedor/actualiza-vendedor.module').then( m => m.ActualizaVendedorPageModule),
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'elimina-registro',
+    loadChildren: () => import('./elimina-registro/elimina-registro.module').then( m => m.EliminaRegistroPageModule),
+    canActivate: [IngresadoGuard]
+  },
  
 
 
