@@ -77,7 +77,7 @@ this.navCtrl.navigateRoot('home');
         /*global*/
         // localStorage.setItem("idclientes_global","")
         const alert = await this.alertCtrl.create({  
-          header: 'Registros enviados a carga con éxito.',  
+          header: 'Usuario no registrado o inactivo.',  
           // subHeader: 'SubTitle',  
           // message: 'This is an alert message',  
           buttons: ['OK']  

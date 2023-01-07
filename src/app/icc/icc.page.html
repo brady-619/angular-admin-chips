@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-item>
-          <ion-title class="ion-text-center">Carga ventas</ion-title>
+          <ion-title class="ion-text-center">Asignación de chips</ion-title>
     <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
     </ion-button>
     </ion-item>
@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-title class="ion-text-center"><h2>Carga masiva tabla Proveedores</h2> </ion-title> 
+  <ion-title class="ion-text-center"><h2>Carga masiva asignación de chips</h2> </ion-title> 
 <p class="lead"></p>
 
   
@@ -73,7 +73,7 @@
         <h2>{{filename}}</h2>
       </ion-label>
       <ion-button (click)="createUsersMulti()" [disabled]="!filename"  size="small" color="primary">
-        Cargar ventas
+        Cargar asignación
       </ion-button>
 
     </ion-col>
