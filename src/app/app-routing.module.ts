@@ -59,6 +59,10 @@ const routes: Routes = [
     loadChildren: () => import('./existencias-por-vendedor/existencias-por-vendedor.module').then( m => m.ExistenciasPorVendedorPageModule),
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'existencias-por-marca',
+    loadChildren: () => import('./existencias-por-marca/existencias-por-marca.module').then( m => m.ExistenciasPorMarcaPageModule)
+  },
  
 
 

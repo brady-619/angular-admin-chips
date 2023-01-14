@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+          <ion-title class="ion-text-center">Existencias por vendedor</ion-title>
+    <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="regresar()" expand="block" fill="clear" shape="round">
+      Regresar
+    </ion-button>
+    </ion-item>
+
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-title class="ion-text-center">VENDEDOR CONSULTADO: {{vendedor_contador}}</ion-title>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+  <ion-grid fixed>
+    <ion-row  >
+      <ion-col size="6" *ngFor="let data of simscontador">
+        
+        
+        
+            <!-- <ion-item-group>
+
+              <ion-item-divider>
+                <ion-icon slot="start" color="primary" name="car"></ion-icon> COMPANIA: {{data.COMPANIA}}
+EXISTENCIAS: {{data.CONTADOR}}
+      </ion-item-divider>
+    </ion-item-group> -->
+         
+    
+    
+    <ion-button expand="block"  shape="round">
+      {{data.COMPANIA}}
+      EXISTENCIAS: {{data.CONTADOR}}
+    </ion-button>
+
+
+ 
+
+
+
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+  <!-- <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6"><ion-button  expand="block" shape="round">
+          <b>AT&T </b>
+        </ion-button></ion-col>
+      <ion-col size="6"><ion-button  expand="block" shape="round">
+          <b>BAIT</b>
+        </ion-button></ion-col>
+      <ion-col size="6"><ion-button  expand="block" shape="round">
+          <b>MOVISTAR</b>
+        </ion-button></ion-col>
+      <ion-col size="6"><ion-button  expand="block" shape="round">
+          <b>UNEFON</b>
+        </ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+
+ -->
+
+
+</ion-content>

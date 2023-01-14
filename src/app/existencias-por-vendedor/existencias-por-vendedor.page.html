@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-item>
-          <ion-title class="ion-text-center">Existencias por vendedor</ion-title>
+          <ion-title class="ion-text-center">Busqueda de vendedor</ion-title>
     <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
     </ion-button>
     </ion-item>
@@ -11,6 +11,80 @@
 
 <ion-content>
 
-  
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="10">
+
+        <ion-card>
+
+
+
+          <form [formGroup]="vendedorForm" (ngSubmit)="buscar()" class="form" action="">
+            <ion-item-group>
+
+              <!-- <ion-item-divider>
+                <ion-icon color="primary" slot="start" name="search"></ion-icon>
+                <ion-label position="inline">Punto de venta</ion-label>
+              </ion-item-divider> -->
+
+              <ion-item-divider>
+                <ion-input [(ngModel)]="vendedor" required formControlName="vendedor" placeholder="Ingresa Vendedor">
+                </ion-input>
+                <ion-button [disabled]="!vendedorForm.valid" type="submit" expand="block" shape="round">
+                  Buscar
+                </ion-button>
+              </ion-item-divider>
+
+            </ion-item-group>
+          </form>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+
+
+  <ion-grid fixed>
+    <ion-row *ngFor="let data of data">
+      <ion-col size="10">
+        <ion-card >
+
+          <ion-item-group>
+
+            <ion-item-divider>
+<!-- 
+              <b>P.V:</b> {{data.nombre}} -->
+
+              <ion-icon slot="start" color="primary" name="person"></ion-icon> Vendedor: {{data.nombre}}
+
+               <ion-button (click)="existencias(data.nombre)"   slot="end" color="success" expand="block" shape="round">
+                Existencias
+              </ion-button> 
+
+             
+
+            </ion-item-divider>
+          </ion-item-group>
+
+
+
+
+
+        </ion-card>
+        
+      </ion-col>
+
+
+
+    </ion-row>
+  </ion-grid>
+
+
+
 
 </ion-content>
