@@ -56,4 +56,9 @@ export class HomePage {
     this.route.navigate(['/elimina-registro']);
   }
 
+  existencias(){
+    this.menu.toggle()
+    this.route.navigate(['/existencias-por-vendedor']);
+  }
+
 }
