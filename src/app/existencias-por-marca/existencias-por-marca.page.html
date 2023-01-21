@@ -45,13 +45,13 @@ EXISTENCIAS: {{data.CONTADOR}}
          
     
     
-    <ion-button expand="block"  shape="round">
+    <ion-button expand="block" (click)="detalle(data.COMPANIA)" shape="round">
       {{data.COMPANIA}}
       EXISTENCIAS: {{data.CONTADOR}}
     </ion-button>
 
 
- 
+
 
 
 
@@ -83,6 +83,28 @@ EXISTENCIAS: {{data.CONTADOR}}
   </ion-grid>
 
  -->
+
+<ion-grid fixed>
+  <ion-row *ngFor="let item of existencias">
+  <ion-col size="6" > 
+
+      <ion-card >
+        <ion-card-content>
+          
+          ICCI: {{item.ICCI}}<br>
+          DN: {{item.DN}}<br>
+          COMPANIA: {{item.COMPANIA}}
+        </ion-card-content>
+        
+      </ion-card>
+
+
+    </ion-col>
+
+    
+  </ion-row>
+</ion-grid>
+
 
 
 </ion-content>
