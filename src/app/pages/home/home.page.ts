@@ -61,4 +61,13 @@ export class HomePage {
     this.route.navigate(['/existencias-por-vendedor']);
   }
 
+  simspdv(){
+    this.menu.toggle()
+    this.route.navigate(['/sims-pdv']);
+  }
+
+  simsvendedor(){
+    this.menu.toggle()
+    this.route.navigate(['/sims-vendedor']);
+  }
 }

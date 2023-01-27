@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-title class="ion-text-center">Consulta de sims entregadas a Vendedores</ion-title>
+      <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="10">
+
+        <ion-card>
+
+<ion-item>
+  
+
+  
+          
+          <ion-list>
+            <ion-item>
+              <ion-label class="ion-text-wrap">Fecha inicio</ion-label>
+              <ion-note slot="end" id="open-popover1">{{inicio | date}}</ion-note>
+            </ion-item>
+            <ion-popover trigger="open-popover1" >
+              <ng-template>
+                <ion-datetime
+                  presentation="date"
+                  [(ngModel)]="inicio"
+                  size="cover"
+                ></ion-datetime>
+                <ion-button (click)="cerrar()" expand="block" fill="clear" shape="round">
+                  Ok
+                </ion-button>
+              </ng-template>
+
+
+            </ion-popover>
+          </ion-list>
+
+        <!-- </ion-item-divider>
+
+
+
+        <ion-item-divider> -->
+          
+          <ion-list>
+            <ion-item>
+              <ion-label class="ion-text-wrap">Fecha fin</ion-label>
+              <ion-note slot="end" id="open-popover2">{{fin | date}}</ion-note>
+            </ion-item>
+            <ion-popover trigger="open-popover2" >
+              <ng-template>
+                <ion-datetime
+                  presentation="date"
+                  [(ngModel)]="fin"
+                  size="cover"
+                ></ion-datetime>
+                <ion-button (click)="cerrar2()" expand="block" fill="clear" shape="round">
+                  Ok
+                </ion-button>
+              </ng-template>
+
+
+            </ion-popover>
+          </ion-list>
+
+        <!-- </ion-item-divider>
+
+
+
+
+          <ion-item-divider> -->
+          <ion-button (click)="consultar(inicio,fin)" expand="block" shape="round">
+            Consultar
+          </ion-button>
+
+        </ion-item>
+
+
+
+         
+
+
+
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+
+
+
+
+  <ion-grid fixed *ngIf="data">
+    <ion-row>
+      <ion-col size="10">
+        <ion-card>
+          <ion-card-content>
+        
+          
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Filtro" [(ngModel)]="term">
+        
+          </div>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">VENDEDOR</th>
+                    <th scope="col">AT&T</th>
+                    <th scope="col">BAIT</th>
+                    <th scope="col">MOVISTAR</th>
+                    <th scope="col">UNEFON</th>
+                    <th scope="col">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of data | filter:term" align="center"   >
+                    <td> <ion-button (click)="detalle(data.VENDEDOR)" expand="block" fill="clear" shape="round">
+                      {{data.VENDEDOR}}
+                    </ion-button> </td>
+                    <td>{{data.ATT}}</td>
+                    <td>{{data.BAIT}}</td>
+                    <td>{{data.MOVISTAR}}</td>
+                    <td>{{data.UNEFON}}</td>
+                    <td>{{data.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+          </ion-card-content>
+        </ion-card> 
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid> 
+
+
+  
+   
+
+</ion-content>

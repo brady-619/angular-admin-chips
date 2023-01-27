@@ -61,7 +61,23 @@ const routes: Routes = [
   },
   {
     path: 'existencias-por-marca',
-    loadChildren: () => import('./existencias-por-marca/existencias-por-marca.module').then( m => m.ExistenciasPorMarcaPageModule)
+    loadChildren: () => import('./existencias-por-marca/existencias-por-marca.module').then( m => m.ExistenciasPorMarcaPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'sims-pdv',
+    loadChildren: () => import('./sims-pdv/sims-pdv.module').then( m => m.SimsPdvPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'sims-vendedor',
+    loadChildren: () => import('./sims-vendedor/sims-vendedor.module').then( m => m.SimsVendedorPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'sims-vendedor-detalle',
+    loadChildren: () => import('./sims-vendedor-detalle/sims-vendedor-detalle.module').then( m => m.SimsVendedorDetallePageModule),
+    canActivate: [IngresadoGuard]
   },
  
 
