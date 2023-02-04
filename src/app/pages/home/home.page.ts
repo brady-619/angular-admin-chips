@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
+
+import { ItemModel } from 'src/app/core/models/item.interface';
+import { LoginService } from 'src/app/services/login.service';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,64 +15,64 @@ import { MenuController } from '@ionic/angular';
 export class HomePage {
 
 
-  constructor(private route: Router, private menu:MenuController) {}
+  constructor(
+    private route: Router,
+    private menu: MenuController,
+
+  ) {}
 
 
-  
 
-  proveedores(){
-    this.menu.toggle()
+  proveedores() {
+    this.menu.toggle();
     this.route.navigate(['/proveedores']);
   }
 
-
-  icc(){
-    this.menu.toggle()
+  icc() {
+    this.menu.toggle();
     this.route.navigate(['/icc']);
   }
 
-
-  bait(){
-    this.menu.toggle()
+  bait() {
+    this.menu.toggle();
     this.route.navigate(['/bait']);
   }
 
-
-  vendedores(){
-    this.menu.toggle()
+  vendedores() {
+    this.menu.toggle();
     this.route.navigate(['/vendedores']);
   }
 
-  estatus(){
-    this.menu.toggle()
+  estatus() {
+    this.menu.toggle();
     this.route.navigate(['/estatus']);
   }
-  salir(){
-    this.menu.toggle()
+  salir() {
+    this.menu.toggle();
     this.route.navigate(['/login']);
-    localStorage.removeItem('ingresado')
+    localStorage.removeItem('ingresado');
   }
-  actualizaVendedor(){
-    this.menu.toggle()
+  actualizaVendedor() {
+    this.menu.toggle();
     this.route.navigate(['/actualiza-vendedor']);
   }
-  eliminaRegistro(){
-    this.menu.toggle()
+  eliminaRegistro() {
+    this.menu.toggle();
     this.route.navigate(['/elimina-registro']);
   }
 
-  existencias(){
-    this.menu.toggle()
+  existencias() {
+    this.menu.toggle();
     this.route.navigate(['/existencias-por-vendedor']);
   }
 
-  simspdv(){
-    this.menu.toggle()
+  simspdv() {
+    this.menu.toggle();
     this.route.navigate(['/sims-pdv']);
   }
 
-  simsvendedor(){
-    this.menu.toggle()
+  simsvendedor() {
+    this.menu.toggle();
     this.route.navigate(['/sims-vendedor']);
   }
 }
