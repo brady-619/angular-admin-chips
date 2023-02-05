@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, PopoverController } from '@ionic/angular';
+import { AppState } from '../app.reducer';
 import { GetHistoricoVendedoresService } from '../services/get-historico-vendedores.service'; 
+import { Store } from '@ngrx/store';
+import { userConfig } from '../models/userconfig.model';
 
 @Component({
   selector: 'app-sims-vendedor',
@@ -18,8 +21,15 @@ export class SimsVendedorPage implements OnInit {
   http: any;
 
   term:any;
-  constructor(private route: Router,private popoverController: PopoverController, private getHistoricoVendedores: GetHistoricoVendedoresService, public alertCtrl: AlertController) { }
 
+  users: userConfig[] = [];
+
+
+  constructor(private route: Router,private popoverController: PopoverController, private getHistoricoVendedores: GetHistoricoVendedoresService, public alertCtrl: AlertController,private store: Store<AppState>) {
+
+    this.store.select('userConfig').subscribe(({ users }) => {
+    this.users = users;
+  }); }
 
   ngOnInit() {}
 

@@ -3,8 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { AlertController, NavController } from '@ionic/angular';
+import { AppState } from '../app.reducer';
+import { Store } from '@ngrx/store';
+import { userConfig } from '../models/userconfig.model';
 
-
+import { userConfigActions } from '../store/actions/userconfig.actions';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +15,19 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  users: userConfig[] = [];
 
-  constructor(public navCtrl: NavController ,public alertCtrl: AlertController,private router: Router, private login: LoginService) { }
+tel:any;
+pass:any
+
+
+  constructor( private store: Store<AppState>,public navCtrl: NavController ,public alertCtrl: AlertController,private router: Router, private login: LoginService) { 
+
+    this.store.select('userConfig').subscribe(({ users }) => {
+      this.users = users;
+    });
+
+  }
 
   loginForm = new FormGroup({
     telefono: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -34,10 +48,26 @@ export class LoginPage implements OnInit {
     console.log("click")
 
 
+
+
+
+
+
     if(this.loginForm.value.telefono !='' || this.loginForm.value.password !='')
     {
       const params=this.loginForm.value
       // console.log("params env",params)
+
+      this.tel= this.loginForm.value.telefono
+      this.pass=this.loginForm.value.password
+      
+
+      const config = new userConfig(this.tel, this.pass);
+      console.log("valores enviados al store:", this.pass)
+      this.store.dispatch(userConfigActions.SetUserConfig({ config }));
+
+
+
 
       await this.login.Login(params).then(async respuesta=>{
       // console.log("la resp del serv es:",respuesta);
