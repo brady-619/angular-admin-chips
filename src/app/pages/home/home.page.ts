@@ -70,4 +70,9 @@ export class HomePage {
     this.menu.toggle()
     this.route.navigate(['/sims-vendedor']);
   }
+
+  reporteVencidos(){
+    this.menu.toggle()
+    this.route.navigate(['/reporte-vencimientos']);
+  }
 }

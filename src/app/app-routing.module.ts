@@ -79,6 +79,10 @@ const routes: Routes = [
     loadChildren: () => import('./sims-vendedor-detalle/sims-vendedor-detalle.module').then( m => m.SimsVendedorDetallePageModule),
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'reporte-vencimientos',
+    loadChildren: () => import('./reporte-vencimientos/reporte-vencimientos.module').then( m => m.ReporteVencimientosPageModule)
+  },
  
 
 
