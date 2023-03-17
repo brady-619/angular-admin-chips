@@ -52,7 +52,6 @@ export class ReporteVencimientosPage implements OnInit {
 
  async ionViewWillEnter(){
     console.log("c llama");
-    localStorage.setItem("vendedor",'')
     
     // window.location.reload();
 
@@ -94,14 +93,6 @@ export class ReporteVencimientosPage implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-   localStorage.setItem("vendedor",this.dataSource.filter )
-
-
-
-
-
-
   }
 
 
@@ -119,16 +110,6 @@ export class ReporteVencimientosPage implements OnInit {
     }
   }
 
-
-
-
-exportar(){
-  
-  let vendedor= localStorage.getItem("vendedor")
-  console.log("El val a exportar es:", vendedor);
-  
-
-  }
 
 
 
