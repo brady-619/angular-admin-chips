@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatSort, Sort} from '@angular/material/sort';
 
-
+import * as XLSX from 'xlsx';
 
 export interface PeriodicElement {
   ICCI: string;
@@ -24,6 +24,8 @@ export interface PeriodicElement {
   DIAS: string;
 }
 
+
+
 @Component({
   selector: 'app-reporte-vencimientos',
   templateUrl: './reporte-vencimientos.page.html',
@@ -32,7 +34,8 @@ export interface PeriodicElement {
 export class ReporteVencimientosPage implements OnInit {
   data: any;
   dataSource = new MatTableDataSource < PeriodicElement > ();
-
+  title = 'angular-app';
+  fileName= 'ExcelSheet.xlsx';
 
   displayedColumns: string[] = ['ICCI', 'DN', 'VENDEDOR', 'COMPANIA', 'ESTATUS', 'CADUCIDAD', 'HOY','DIAS'];
 
@@ -52,6 +55,8 @@ export class ReporteVencimientosPage implements OnInit {
 
  async ionViewWillEnter(){
     console.log("c llama");
+
+    
     
     // window.location.reload();
 
@@ -76,6 +81,21 @@ export class ReporteVencimientosPage implements OnInit {
   
   
     });
+  }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
   }
 
 
