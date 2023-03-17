@@ -34,7 +34,7 @@ export class ReporteVencimientosPage implements OnInit {
   dataSource = new MatTableDataSource < PeriodicElement > ();
 
 
-  displayedColumns: string[] = ['ICCI', 'DN', 'VENDEDOR', 'COMPANIA', 'ESTATUS', 'CADUCIDAD', 'HOY','DIAS','options'];
+  displayedColumns: string[] = ['ICCI', 'DN', 'VENDEDOR', 'COMPANIA', 'ESTATUS', 'CADUCIDAD', 'HOY','DIAS'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer,private router: Router, public alertCtrl: AlertController,private listadovencimientos: GetListadoVencimientosService, private alertController: AlertController) { }
 
