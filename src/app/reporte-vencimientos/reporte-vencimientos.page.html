@@ -27,7 +27,12 @@
                       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. nombre" #input>
                     </mat-form-field></ion-col>
                   <ion-col size="6">
-                    <button (click)="exportexcel()">Export to Excel</button>
+
+                    <ion-button expand="block"  shape="round" (click)="exportexcel()">Exportar
+                    </ion-button>
+
+
+         
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -37,9 +42,9 @@
             </ion-item>
 
 
+            <div class="mat-elevation-z8">
 
-
-            <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)" *ngIf="data" class="mat-elevation-z8"  id="excel-table">
+            <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)" *ngIf="data"  id="excel-table">
 
               <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
@@ -99,10 +104,10 @@
            
 
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons aria-label="Select page of periodic elements">
+            <mat-paginator [pageSize]="5" showFirstLastButtons aria-label="Select page of periodic elements">
             </mat-paginator>
 
-
+            </div>
           </ion-card-content>
         </ion-card>
 
