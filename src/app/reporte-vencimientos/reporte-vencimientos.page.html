@@ -10,5 +10,138 @@
 </ion-header>
 
 <ion-content>
+  <br>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <ion-card>
+          <ion-card-content>
+
+            <ion-item>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="6">
+                    <mat-form-field>
+                      <mat-label>Filter</mat-label>
+                      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. nombre" #input>
+                    </mat-form-field></ion-col>
+                  <ion-col size="6">
+                    <ion-button (click)="exportar()" color="success"  expand="block" shape="round">
+                     Exportar
+                    </ion-button> 
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+
+
+            </ion-item>
+
+
+
+
+            <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)" *ngIf="data" class="mat-elevation-z8">
+
+              <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="ICCI">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ICCI"> ICCI </th>
+                <td mat-cell *matCellDef="let element"> {{element.ICCI}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="DN">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DN"> DN </th>
+                <td mat-cell *matCellDef="let element"> {{element.DN}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="VENDEDOR">
+                <th mat-header-cell *matHeaderCellDef> VENDEDOR </th>
+                <td mat-cell *matCellDef="let element"> {{element.VENDEDOR}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="COMPANIA">
+                <th mat-header-cell *matHeaderCellDef> COMPANIA </th>
+                <td mat-cell *matCellDef="let element"> {{element.COMPANIA}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="ESTATUS">
+                <th mat-header-cell *matHeaderCellDef> ESTATUS </th>
+                <td mat-cell *matCellDef="let element"> {{element.ESTATUS}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="CADUCIDAD">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by CADUCIDAD"> CADUCIDAD </th>
+                <td mat-cell *matCellDef="let element"> {{element.CADUCIDAD}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="HOY">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by HOY"> HOY </th>
+                <td mat-cell *matCellDef="let element"> {{element.HOY}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="DIAS">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DIAS"> DIAS </th>
+                <td mat-cell *matCellDef="let element"> {{element.DIAS}} </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="options">
+                <th mat-header-cell *matHeaderCellDef> opciones </th>
+                <td mat-cell *matCellDef="let element">
+
+                  <!-- <button (click)="setMarca(row._id)" type="button" class="btn-info" data-bs-toggle="modal"
+                    data-bs-target="#infobrandsModal">Info</button>
+
+                <button routerLink="/productos" (click)="setMarca(row._id)" class="btn-products">Productos</button> -->
+                  <ion-item lines="none">
+
+
+
+                    <ion-button  expand="block" fill="clear" shape="round">
+                      <ion-icon color="primary" name="create-outline"></ion-icon>
+                    </ion-button>
+
+
+                    <ion-button  expand="block" fill="clear" shape="round">
+                      <ion-icon color="danger" name="trash-outline"></ion-icon>
+                    </ion-button>
+                  </ion-item>
+
+
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+           
+
+
+            <mat-paginator [pageSize]="5" showFirstLastButtons aria-label="Select page of periodic elements">
+            </mat-paginator>
+
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
 
 </ion-content>

@@ -8,11 +8,19 @@ import { ReporteVencimientosPageRoutingModule } from './reporte-vencimientos-rou
 
 import { ReporteVencimientosPage } from './reporte-vencimientos.page';
 
+
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
+import {MatInputModule} from '@angular/material/input';
+import {MatSortModule} from '@angular/material/sort';
+
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    CommonModule,MatTableModule,MatPaginatorModule,
+    FormsModule,MatInputModule,
+    IonicModule,MatSortModule,
     ReporteVencimientosPageRoutingModule
   ],
   declarations: [ReporteVencimientosPage]
