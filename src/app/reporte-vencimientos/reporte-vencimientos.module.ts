@@ -15,12 +15,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
-
+import {OverlayModule} from '@angular/cdk/overlay';
 @NgModule({
   imports: [
     CommonModule,MatTableModule,MatPaginatorModule,
     FormsModule,MatInputModule,
-    IonicModule,MatSortModule,
+    IonicModule,MatSortModule,OverlayModule,
     ReporteVencimientosPageRoutingModule
   ],
   declarations: [ReporteVencimientosPage]

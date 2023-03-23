@@ -15,5 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+
+
+    
 })
 export class AppModule {}
