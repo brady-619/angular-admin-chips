@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+          <ion-title class="ion-text-center">Editar Punto de venta</ion-title>
+          <ion-button [routerLink]="['/puntos-de-venta']"> <ion-icon slot="icon-only" name="return-up-back"></ion-icon>
+          </ion-button>
+    <ion-button [routerLink]="['/home']"> <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-grid fixed *ngIf="data">
+    <ion-row >
+      <ion-col size="12">
+
+
+        <ion-card>
+          <ion-card-content>
+
+
+<ion-item>
+  
+
+              <ion-label>Nombre:</ion-label>
+              <ion-input type="text" placeholder="Escribe nombre" [(ngModel)]="nombre"  ></ion-input>
+</ion-item>
+
+
+<ion-item>
+  <ion-label>Apellido:</ion-label>
+  <ion-input [(ngModel)]="apellido"  type="text" placeholder="Escribe apellido"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>Domicilio:</ion-label>
+    <ion-input [(ngModel)]="domicilio"  type="text" placeholder="Escribe domicilio"></ion-input>
+    </ion-item>
+
+
+
+  <ion-item>
+    <ion-label>Dueño:</ion-label>
+    <ion-input [(ngModel)]="dueno"  type="text" placeholder="Escribe dueno"></ion-input>
+    </ion-item>
+
+
+<ion-item>
+<ion-label>Email:</ion-label>
+<ion-input [(ngModel)]="email"  type="text" placeholder="Escribe email"></ion-input>
+</ion-item>
+
+
+
+
+
+<ion-item>
+<ion-label>Giro:</ion-label>
+<ion-select  [(ngModel)]="giro"   placeholder="Selecciona una opcion">
+  <ion-select-option value="telefonia">Telefonía</ion-select-option>
+  <ion-select-option value="otros">Otros</ion-select-option>
+</ion-select>
+</ion-item>
+
+
+
+
+<ion-item>
+  <ion-label>Telefono 1:</ion-label>
+  <ion-input [(ngModel)]="telefono1"  type="text" placeholder="Escribe telefono1"></ion-input>
+  </ion-item>
+  
+
+
+
+  <ion-item>
+    <ion-label>Telefono 2:</ion-label>
+    <ion-input [(ngModel)]="telefono2"  type="text" placeholder="Escribe telefono2"></ion-input>
+    </ion-item>
+    
+
+
+    <ion-item>
+      <ion-label>Vendedor:</ion-label>
+      <ion-input [(ngModel)]="vendedor"  type="text" placeholder="Escribe vendedor"></ion-input>
+      </ion-item>
+
+
+        
+            
+            
+          </ion-card-content>
+        </ion-card>
+
+
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+

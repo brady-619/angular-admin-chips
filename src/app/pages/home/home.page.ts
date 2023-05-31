@@ -75,4 +75,11 @@ export class HomePage {
     this.menu.toggle()
     this.route.navigate(['/reporte-vencimientos']);
   }
+
+  pv(){
+    this.menu.toggle()
+    this.route.navigate(['/puntos-de-venta']);
+
+  }
+
 }

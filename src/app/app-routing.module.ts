@@ -83,7 +83,15 @@ const routes: Routes = [
     path: 'reporte-vencimientos',
     loadChildren: () => import('./reporte-vencimientos/reporte-vencimientos.module').then( m => m.ReporteVencimientosPageModule)
   },
- 
+  {
+    path: 'puntos-de-venta',
+    loadChildren: () => import('./puntos-de-venta/puntos-de-venta.module').then( m => m.PuntosDeVentaPageModule)
+  },
+  {
+    path: 'editar-puntos-de-venta',
+    loadChildren: () => import('./puntos-de-venta/editar/editar-puntos-de-venta/editar-puntos-de-venta.module').then( m => m.EditarPuntosDeVentaPageModule)
+  },
+
 
 
 
