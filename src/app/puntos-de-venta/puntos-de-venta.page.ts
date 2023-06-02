@@ -6,6 +6,8 @@ import {MatSort, Sort} from '@angular/material/sort';
 import {ViewChild} from '@angular/core';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { DeletePuntoDeVentaIdService } from '../../app/services/delete-punto-de-venta-id.service';
 
 
 
@@ -27,7 +29,7 @@ export class PuntosDeVentaPage implements OnInit {
 
 
 
-  constructor(private router: Router,private getPuntosDeVenta: GetPuntosDeVentaService,private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(public alertCtrl: AlertController,private router: Router,private getPuntosDeVenta: GetPuntosDeVentaService,private _liveAnnouncer: LiveAnnouncer, private deletePuntoVentaId: DeletePuntoDeVentaIdService ) {}
 
 
   @ViewChild(MatPaginator)
@@ -41,39 +43,40 @@ export class PuntosDeVentaPage implements OnInit {
   dataSource = new MatTableDataSource <PeriodicElement> ();
 
   ngOnInit() {
-
-    
-    this.getPuntosDeVenta.GetPuntosDeVenta().then((respuesta) => {
-        console.log('resp', respuesta);
-
-        this.data = respuesta.data;
-
-        this.data = respuesta.data
-    let ELEMENT_DATA: PeriodicElement[] = respuesta.data
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    // this.dataSource = ELEMENT_DATA;
-
-    // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-
-    console.log(this.dataSource)
-    this.dataSource.paginator = this.paginator;
-    // console.log(this.dataSource.paginator)
-    // console.log(this.paginator)
+  }
 
 
 
 
+  async ionViewWillEnter(){
+  await  this.getPuntosDeVenta.GetPuntosDeVenta().then((respuesta) => {
+      console.log('resp', respuesta);
+
+      this.data = respuesta.data;
+
+      this.data = respuesta.data
+  let ELEMENT_DATA: PeriodicElement[] = respuesta.data
+  this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // this.dataSource = ELEMENT_DATA;
+
+  // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
 
 
-      })
-      .catch((error) => {
-        /* Código a realizar cuando se rechaza la promesa */
-        console.log('NO paso chido', error);
-      });
+  console.log(this.dataSource)
+  this.dataSource.paginator = this.paginator;
+  // console.log(this.dataSource.paginator)
+  // console.log(this.paginator)
 
 
 
+
+
+
+    })
+    .catch((error) => {
+      /* Código a realizar cuando se rechaza la promesa */
+      console.log('NO paso chido', error);
+    });
 
 
   }
@@ -114,8 +117,110 @@ export class PuntosDeVentaPage implements OnInit {
 
 
 
-  eliminar(idpunto_venta:any){
-    console.log("del",idpunto_venta )
+  async eliminar(idpunto_venta:any, nombre:any){
+    // console.log("del",idpunto_venta)
+
+
+
+ const request = {
+  idpunto_venta: idpunto_venta
+              }
+
+
+
+              const alert = await this.alertCtrl.create({
+                header: 'AVISO, seguro que deseas ELIMINAR el punto de venta ' + nombre + '?' ,
+                // subHeader: 'ICC:' +  sims  + '   al P.V:'  + this.pv,
+                // message:
+                //   '<b>ICC:</b><br/>' +
+                //   ICCI +
+                //   '   <br/><b>al PDV: </b><br/>' +
+                //   this.pv +
+                //   '   <br/><b>de compañia: </b><br/>' +
+                //   COMPANIA,
+                buttons: [
+                  {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {
+                      console.log('Confirm Cancel');
+                    },
+                  },
+                  {
+                    text: 'Ok',
+                    // handler: (alertData) => { //takes the data
+                    //     console.log(alertData.name1);
+                    // }
+                    handler: async (alertData) => {
+                      console.log('Se manda el borrado ');
+          
+
+                      // this.on = true;
+
+
+                      
+          
+                      const params = {
+                        data: [{ idpunto_venta: idpunto_venta }]
+                                    }
+
+
+                                   
+          
+                      // console.log("para", params)
+          
+                      await this.deletePuntoVentaId.DeletePuntoDeVentaID(params).then(async (resp) => {
+                          console.log("resp", resp)
+          
+
+                      
+          
+                          const alert = await this.alertCtrl.create({
+                            header: 'Registro eliminado con éxito.',
+                            // subHeader: 'SubTitle',
+                            // message: 'This is an alert message',
+                            buttons: ['OK'],
+                          });
+                          await alert.present();
+
+
+              setTimeout(function(){location.reload()}, 3000);
+
+          
+                          // this.on = false;
+
+          
+                          // this.sims = resp.data;
+                        })
+                        .catch(async (error) => {
+                          /* Código a realizar cuando se rechaza la promesa */
+                          console.log('NO paso chido', error);
+          
+                          const alert = await this.alertCtrl.create({
+                            header: 'Error en red.',
+                            // subHeader: 'SubTitle',
+                            // message: 'This is an alert message',
+                            buttons: ['OK'],
+                          });
+                          await alert.present();
+                        });
+                    },
+                  },
+                ],
+              });
+          
+              await alert.present();
+
+
+
+
+
+
+              
+
+
+
 
   }
   

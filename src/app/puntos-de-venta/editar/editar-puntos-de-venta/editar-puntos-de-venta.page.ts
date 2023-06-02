@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetPuntoDeVentaIdService } from '../../../../app/services/get-punto-de-venta-id.service';
+import { UpdateEditarPuntosDeVentaIdService } from 'src/app/services/update-editar-puntos-de-venta-id.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-puntos-de-venta',
@@ -10,7 +13,7 @@ export class EditarPuntosDeVentaPage implements OnInit {
 
 
 
-  constructor(private GetPuntoDeVentaId: GetPuntoDeVentaIdService) { }
+  constructor(private GetPuntoDeVentaId: GetPuntoDeVentaIdService, private updateEditarPuntosDeVentaId: UpdateEditarPuntosDeVentaIdService,private alertCtrl: AlertController,private route: Router) { }
 
   idpunto_venta:any;
   respuesta:any;
@@ -30,6 +33,11 @@ export class EditarPuntosDeVentaPage implements OnInit {
 
 
 
+
+  
+
+
+
   ngOnInit(){
 
   }
@@ -37,7 +45,7 @@ export class EditarPuntosDeVentaPage implements OnInit {
 
 
 
-  ionViewWillEnter() {
+ async ionViewWillEnter() {
 
 
 
@@ -50,7 +58,7 @@ export class EditarPuntosDeVentaPage implements OnInit {
 
 
 
-  this.GetPuntoDeVentaId.GetPuntosDeVentaId(params).then((respuesta) => {
+ await this.GetPuntoDeVentaId.GetPuntosDeVentaId(params).then((respuesta) => {
     console.log('resp', respuesta);
 
     this.data = respuesta.data;
@@ -89,6 +97,99 @@ export class EditarPuntosDeVentaPage implements OnInit {
 
 
 
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+ async editar(nombre:any,apellido:any,domicilio:any,dueno:any,email:any,giro:any,telefono1:any,telefono2:any,vendedor:any,idpunto_venta:any){
+
+    console.log(nombre,apellido,domicilio,dueno,email,giro,telefono1,telefono2,vendedor,idpunto_venta)
+
+
+             
+    const params = {
+      data: [{ nombre:nombre,apellido:apellido,domicilio:domicilio,dueno:dueno,email:email,giro:giro,telefono1:telefono1,telefono2:telefono2,vendedor:vendedor,idpunto_venta:idpunto_venta }]
+                  }
+
+
+
+    await this.updateEditarPuntosDeVentaId.UpdatePuntoDeVentaID(params).then(async (respuesta) => {
+      console.log('resp', respuesta);
+
+
+
+
+      if (respuesta.status === "000") {
+                        // alert("Carga realizada con éxito.");
+                        const alert = await this.alertCtrl.create({  
+                          header: 'Registro editado con éxito.',  
+                          // subHeader: 'SubTitle',  
+                          // message: 'This is an alert message',  
+                          buttons: ['OK']  
+                        });  
+                        await alert.present();  
+                        
+    
+                        
+                        setTimeout(() => {
+                          this.route.navigate(['/puntos-de-venta']);
+                        }, 3000);
+                        
+                    
+                        
+                      }
+                      else {
+                        // alert("Carga realizada con éxito.");
+                        const alert = await this.alertCtrl.create({  
+                          header: 'Error al registrar.',  
+                          // subHeader: 'SubTitle',  
+                          // message: 'This is an alert message',  
+                          buttons: ['OK']  
+                        });  
+                        await alert.present();  
+    
+                        // this.ngOnInit();
+                      }
+                    
+                    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    })
+    .catch((error) => {
+      /* Código a realizar cuando se rechaza la promesa */
+      console.log('NO paso chido', error);
+    });
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
